@@ -6,7 +6,7 @@ from torch import nn
 import json
 import os
 if __name__ == '__main__':
-    dataset_path = "G:/My Drive/bioinfor_training/28729127/MLOmics/Main_Dataset/Classification_datasets/GS-BRCA/Image/Top_withmapping/dataset"
+    dataset_path = "/kaggle/input/brca-cacnerbenchmark-withgenenamemapping/Image/Top_withmapping/dataset"
     
     model = StratifiedKFoldCrossValidation(
         model_name="EfficientNetB1Classifier",
@@ -128,11 +128,11 @@ if __name__ == '__main__':
         save_to_csv(pixels, f"{out}critical_pixels_class_{cls}.csv")
 
         # 4. Map to genes
-        genes_cnv = find_critical_gene(pixels,"/gene_coordinates_CNV.csv")
+        genes_cnv = find_critical_gene(pixels,"/kaggle/input/brca-cacnerbenchmark-withgenenamemapping/Image/Top_withmapping/gene_coordinates_CNV.csv")
         save_to_csv(genes_cnv, f"{out}cnv_class_{cls}.csv")
 
-        methyl = find_critical_gene(pixels,"/kaggle/input/brca-cacnerbenchmark-withgenenamemapping/Image/Aligned_withmapping/gene_coordinates_Methylation.csv")
+        methyl = find_critical_gene(pixels,"/kaggle/input/brca-cacnerbenchmark-withgenenamemapping/Image/Top_withmapping/gene_coordinates_Methylation.csv")
         save_to_csv(methyl, f"{out}methyl_class_{cls}.csv")
 
-        mrna = find_critical_gene(pixels,"/kaggle/input/brca-cacnerbenchmark-withgenenamemapping/Image/Aligned_withmapping/gene_coordinates_mRNA.csv")
+        mrna = find_critical_gene(pixels,"/kaggle/input/brca-cacnerbenchmark-withgenenamemapping/Image/Top_withmapping/gene_coordinates_mRNA.csv")
         save_to_csv(mrna, f"{out}mRNA_class_{cls}.csv")
