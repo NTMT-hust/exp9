@@ -69,42 +69,9 @@ if __name__ == '__main__':
 
     plt.tight_layout()
     plt.savefig('imbalanced_kfold_comprehensive_results.png', dpi=300, bbox_inches='tight')
-    plt.show()
-    figg, axess = plt.subplots(3, 3, figsize=(20, 15))
-    for i, result in enumerate(fold_test_results):
-        history = result['before_calibration']
 
-        axess[0, 0].plot(history['train_loss'], label=f"Fold {i+1}", alpha=0.7)
-        axess[0, 1].plot(history['val_loss'], label=f"Fold {i+1}", alpha=0.7)
-        axess[0, 2].plot(history['train_f1'], label=f"Fold {i+1}", alpha=0.7)
-        axess[1, 0].plot(history['train_acc'], label=f"Fold {i+1}", alpha=0.7)
-        axess[1, 1].plot(history['val_acc'], label=f"Fold {i+1}", alpha=0.7)
-        axess[1, 2].plot(history['val_f1'], label=f"Fold {i+1}", alpha=0.7)
-        axess[2, 0].plot(history['train_auc'], label=f"Fold {i+1}", alpha=0.7)
-        axess[2, 1].plot(history['val_auc'], label=f"Fold {i+1}", alpha=0.7)
-        axess[2, 2].plot(history['val_sens'], label=f"Fold {i+1}", alpha=0.7)
-
-    axess[0, 0].set_title('Training Loss')
-    axess[0, 1].set_title('Validation Loss')
-    axess[0, 2].set_title('Training F1-Score')
-    axess[1, 0].set_title('Training Accuracy')
-    axess[1, 1].set_title('Validation Accuracy')
-    axess[1, 2].set_title('Validation F1-Score')
-    axess[2, 0].set_title('Training AUC')
-    axess[2, 1].set_title('Validation AUC')
-    axess[2, 2].set_title('Validation Sensitivity')
-
-    for ax in axess.flat:
-        ax.set_xlabel('Epoch')
-        ax.legend()
-        ax.grid(True, alpha=0.3)
-
-    plt.tight_layout()
-    plt.savefig('imbalanced_kfold_comprehensive_test_results.png', dpi=300, bbox_inches='tight')
-    plt.show()
-
-
-    with open("fold_test_results.txt", "w", encoding="utf-8") as f:
+    with open("/fold_test_results.txt", "w", encoding="utf-8") as f:
+        fold_test_results = convert_numpy(fold_test_results)
         json.dump(fold_test_results, f, indent=4)
 
     print("/n✓ Visualization saved as 'imbalanced_kfold_comprehensive_results.png'")

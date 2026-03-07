@@ -268,7 +268,7 @@ def plot_confusion_matrix(cm, class_names, title='Confusion Matrix', save_path=N
 
     if save_path:
         plt.savefig(save_path, dpi=300, bbox_inches='tight')
-    plt.show()
+
 
 
 def calculate_cluster_metrics(model, dataloader, device, num_classes):
@@ -398,3 +398,13 @@ def calculate_comprehensive_metrics(y_true, y_pred, y_prob, num_classes, class_n
     metrics['silhouette'] = None
 
     return metrics
+
+def convert_numpy(obj):
+    if isinstance(obj, np.ndarray):
+        return obj.tolist()
+    elif isinstance(obj, dict):
+        return {k: convert_numpy(v) for k, v in obj.items()}
+    elif isinstance(obj, list):
+        return [convert_numpy(v) for v in obj]
+    else:
+        return obj
