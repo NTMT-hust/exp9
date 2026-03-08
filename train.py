@@ -2,6 +2,7 @@ from StratifiedKFoldCrossValidation import StratifiedKFoldCrossValidation
 import pandas as pd
 import matplotlib.pyplot as plt
 from ProcessHeatMapResult import *
+from additional_function import *
 from torch import nn
 import json
 import os
