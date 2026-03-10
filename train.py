@@ -13,7 +13,7 @@ if __name__ == '__main__':
         model_name="EfficientNetB1Classifier",
         dataset_path=dataset_path,
         k_folds=5,
-        num_epochs=50,
+        num_epochs=200,
         freeze_epochs=0,
         batch_size=32,
         lr=0.0002,
