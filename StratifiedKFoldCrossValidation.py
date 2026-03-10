@@ -692,4 +692,4 @@ def safe_mean_stack(heatmaps, fallback_shape=None):
         if fallback_shape is None:
             return None
         return np.zeros(fallback_shape, dtype=np.float32)
-    return np.mean(np.stack(heatmaps), axis=0)
+    return np.median(np.stack(heatmaps), axis=0)
