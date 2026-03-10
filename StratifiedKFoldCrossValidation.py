@@ -104,7 +104,7 @@ class StratifiedKFoldCrossValidation:
         self.device = device
         
         # 3. Tách tập Test 20% trước (Stratified)
-        sss = StratifiedShuffleSplit(n_splits=1, test_size=0.1, random_state=self.random_seed)
+        sss = StratifiedShuffleSplit(n_splits=1, test_size=0.2, random_state=self.random_seed)
         trainval_idx, test_idx = next(sss.split(image_paths, labels))
 
         test_image_paths = image_paths[test_idx]

@@ -16,7 +16,7 @@ if __name__ == '__main__':
         num_epochs=50,
         freeze_epochs=0,
         batch_size=32,
-        lr=0.0003,
+        lr=0.0002,
         weight_decay=1e-3,
         dropout_rate=0.6,
         focal_gamma=2.0,
@@ -26,7 +26,7 @@ if __name__ == '__main__':
         use_temperature_scaling=False,
         calculate_cluster_metrics_flag=False,
         random_seed=42,
-        lambda1=0.1
+        lambda1=0.8
     )
 
     fold_results, fold_models, ensemble_metrics, class_names, calibrators, all_heatmaps, fold_test_results = model.run()
