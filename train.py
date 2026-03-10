@@ -26,7 +26,7 @@ if __name__ == '__main__':
         use_temperature_scaling=False,
         calculate_cluster_metrics_flag=False,
         random_seed=42,
-        lambda1=0.8
+        lambda1=0.08
     )
 
     fold_results, fold_models, ensemble_metrics, class_names, calibrators, all_heatmaps, fold_test_results = model.run()
